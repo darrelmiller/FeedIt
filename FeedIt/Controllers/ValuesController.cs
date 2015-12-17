@@ -12,7 +12,7 @@ namespace FeedIt.Controllers
         [Route("")]
         public IHttpActionResult Get()
         {
-            return new ResponseMessageResult(new HttpResponseMessage() { Content = new StringContent("Welcome to FeedIt") });
+            return new ResponseMessageResult(new HttpResponseMessage() { Content = new StringContent("Welcome to FeedIt!") });
         }
     }
 
