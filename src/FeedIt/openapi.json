@@ -1,0 +1,26 @@
+﻿{
+  "swagger": "2.0",
+  "paths": {
+    "/": {
+      "get": {
+        "description": "This Open API description",
+        "operationId": "description",
+        "responses": { }
+      }
+    },
+    "/feed/{feedId}": {
+      "get": {
+        "description": "Link to RSS feed",
+        "operationId": "feed",
+        "responses": { }
+      }
+    },
+    "/feed/{feedId}/entry/{entryId}/media": {
+      "get": {
+        "description" :  "Link to audio for episode",
+        "operationId": "audio",
+        "responses": { }
+      } 
+    }
+  }
+}

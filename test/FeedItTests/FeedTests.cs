@@ -41,7 +41,7 @@ namespace FeedItTests
             {
                 Title = "This is my feed",
                 Link = new Uri("http://example.org/here"),
-                Description = "This is the description of my feed"
+                Description = "This is the description of my feed",
             };
 
             feed.FeedItems.Add(new FeedItem() { Title = "This is an item in the feed" });

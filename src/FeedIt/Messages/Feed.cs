@@ -20,6 +20,7 @@ namespace FeedIt
         public string ManagingEditor { get; set; }
         public string WebMaster { get; set; }
         public ITunesFeedMetadata ITunesFeedMetaData { get; set; }
+        public string Language { get; set; }
 
         public List<FeedItem> FeedItems { get; set; }
         public Feed()
@@ -62,6 +63,7 @@ namespace FeedIt
             xw.WriteElementString("title", this.Title);
             xw.WriteElementString("link", this.Link.AbsoluteUri);
             xw.WriteElementString("description", this.Description);
+            if (!string.IsNullOrWhiteSpace(Language)) xw.WriteElementString("language", Language);
 
             if (ITunesFeedMetaData != null)
             {
@@ -75,14 +77,20 @@ namespace FeedIt
                     xw.WriteEndElement();
                 }
                 //Owner
-                //Category
+                xw.WriteStartElement("category", ITunesNS);
+                xw.WriteAttributeString("text", "Technology");
+                xw.WriteStartElement("category", ITunesNS);
+                xw.WriteAttributeString("text", "Software How-To");
+                xw.WriteEndElement();
+
+                xw.WriteEndElement();
             }
             foreach (var item in FeedItems)
             {
                 item.WriteTo(xw);
             }
 
-            //if (!string.IsNullOrWhitespace(Language))  
+
             xw.WriteEndElement();
             xw.WriteEndElement();
             xw.WriteEndDocument();

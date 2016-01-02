@@ -80,10 +80,12 @@
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="packages.config" />
+    <EmbeddedResource Include="openapi.json" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\FeedEntryController.cs" />
     <Compile Include="Messages\FeedContent.cs" />
     <Compile Include="Messages\FeedItem.cs" />
     <Compile Include="Messages\ITunesFeedItemMetadata.cs" />
@@ -94,7 +96,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Episode.cs" />
+    <Compile Include="Models\Podcast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FeedService.cs" />
+    <Compile Include="Services\PodcastService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\FeedIt.pubxml" />

@@ -7,6 +7,12 @@ using System.Xml;
 
 namespace FeedIt
 {
+    public class Enclosure
+    {
+        public Uri Link { get; set; }
+        public int Length { get; set; }
+        public string Type { get; set; }
+    }
     public class FeedItem
     {
         public string Title { get; set; }
@@ -15,7 +21,7 @@ namespace FeedIt
         public string Author { get; set; }
         public string Category { get; set; }
         public string Comments { get; set; }
-        public Uri Enclosure { get; set; }
+        public Enclosure Enclosure { get; set; }
         public string Guid { get; set; }
         public string Source { get; set; }
         public DateTime PubDate { get; set; }
@@ -31,7 +37,9 @@ namespace FeedIt
             if (Enclosure != null)
             {
                 xw.WriteStartElement("enclosure");
-                xw.WriteStartAttribute("url", this.Enclosure.AbsoluteUri);
+                xw.WriteAttributeString("url", this.Enclosure.Link.AbsoluteUri);
+                xw.WriteAttributeString("length", this.Enclosure.Length.ToString());
+                xw.WriteAttributeString("type", this.Enclosure.Type);
                 xw.WriteEndElement();
             }
             if (!string.IsNullOrWhiteSpace(Guid)) xw.WriteElementString("guid", this.Guid);
